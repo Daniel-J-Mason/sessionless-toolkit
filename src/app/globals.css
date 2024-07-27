@@ -3,17 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: 214, 219, 220;
+  --background-start-rgb: 39, 99, 97; /* steel blue */
+  --background-end-rgb: 39, 99, 97; /* cornflower blue */
 }
 
 body {
@@ -24,6 +16,25 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+button {
+  color: rgb(var(--foreground-rgb));
+  outline: 2px solid rgb(var(--foreground-rgb));
+  background-color: var(--foreground-rgb);
+  margin: 5px;
+  padding: 10px;
+}
+
+button:hover{
+  color: rgb(var(--background-end-rgb));
+  background-color: rgb(var(--foreground-rgb));
+}
+
+textarea {
+  background-color: rgb(var(--background-end-rgb));
+  min-width: 600px;
+  min-height: 100px;
 }
 
 @layer utilities {
