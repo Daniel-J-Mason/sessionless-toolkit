@@ -15,6 +15,6 @@ export default function EpochMilli() {
     }, []);
 
     return (
-        <CopyToClipBoardButton labelText={"Current Epoch Milli: " + time}/>
+        <CopyToClipBoardButton labelText={"Current Epoch Milli: "} labelValue={time}/>
     )
 }

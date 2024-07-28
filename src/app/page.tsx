@@ -3,13 +3,15 @@ import MessageBox from "@/app/_components/MessageBox";
 import EpochMilli from "@/app/_components/EpochMilli";
 
 export default function Home() {
+
   return (
       <main style={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignItems: "center",
-          height: "100vh"
+          height: "100vh",
+          paddingTop: "50px"
       }}>
           <GenerateKeys />
           <EpochMilli/>

@@ -3,14 +3,15 @@ import {useState} from "react";
 
 interface Props {
     labelText: string,
+    labelValue: string,
 }
 
-export default function CopyToClipBoardButton({labelText}: Props) {
+export default function CopyToClipBoardButton({labelText, labelValue}: Props) {
     const [copySuccess, setCopySuccess] = useState(' ');
 
     function copyToClipboard() {
         if (typeof navigator != "undefined") {
-            navigator.clipboard.writeText(labelText).then(() => {
+            navigator.clipboard.writeText(labelValue).then(() => {
                 setCopySuccess('Copied!')
             }, function (err) {
                 setCopySuccess("Failed to copy text")
@@ -25,12 +26,15 @@ export default function CopyToClipBoardButton({labelText}: Props) {
 
     return (
         <div style={{display: "flex", width: "100%", justifyContent: "center", alignItems: "center"}}>
+            <label style={{fontWeight: "bold"}}>
+                {labelText}
+            </label>
             <label style={{
                 wordWrap: "break-word",
                 overflowWrap: "break-word",
                 wordBreak: "break-word",
                 minWidth: 0,
-            }}>{labelText}</label>
+            }}>{labelValue}</label>
             <button style={{
                 padding: "0px",
                 outline: "0px transparent",

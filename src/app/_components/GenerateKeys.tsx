@@ -3,14 +3,19 @@
 import {useEffect, useState} from "react";
 import {invoke} from "@tauri-apps/api/tauri";
 import CopyToClipBoardButton from "@/app/_components/CopyLabel";
+import {usePrivateKeyContext} from "@/app/_context/PrivateKeyContext";
 
 export default function GenerateKeys() {
-    const [keys, setKeys] = useState(["", ""]);
+    const [publicKey, setPublicKey] = useState("Loading...");
+    const {privateKeyGlobal ,setPrivateKeyGlobal} = usePrivateKeyContext();
 
     function generateKeys() {
-            invoke<[string, string]>('generate_keys')
-                .then(result => setKeys(result))
-                .catch(console.error);
+        invoke<[string, string]>('generate_keys')
+            .then(result => {
+                setPrivateKeyGlobal(result[0]);
+                setPublicKey(result[1]);
+            })
+            .catch(console.error);
     }
 
     useEffect(() => {
@@ -26,8 +31,8 @@ export default function GenerateKeys() {
         }}>
             <button onClick={generateKeys}>Generate Keys</button>
             <div>
-                <CopyToClipBoardButton labelText={"Private Key: " + keys[0] || "Loading..."}/>
-                <CopyToClipBoardButton labelText={"Public Key: " + keys[1] || "Loading..."}/>
+                <CopyToClipBoardButton labelText={"Private Key: "} labelValue={privateKeyGlobal || "Loading..."}/>
+                <CopyToClipBoardButton labelText={"Public Key: "} labelValue={publicKey || "Loading..."}/>
             </div>
         </div>
     )
