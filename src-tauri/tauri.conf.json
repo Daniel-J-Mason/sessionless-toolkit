@@ -40,6 +40,14 @@
       "resources": [],
       "shortDescription": "",
       "targets": "all",
+      "updater": {
+        "active": true,
+        "endpoints": [
+          "https://github.com/Daniel-J-Mason/sessionless-toolkit/releases/download/{{current_version}}/myapp_{{current_version}}_{{target}}_{{arch}}.zip"
+        ],
+        "dialog": true,
+        "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDU3OTRGMEY0MUQ0RUIwMjEKUldRaHNFNGQ5UENVVit0dythRW1MRTN5ZS9uaVppOXpVMTdZK1lkL3NwSkxJMm5raUwrajVlYTcK"
+      },
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
