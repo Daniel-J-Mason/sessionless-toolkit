@@ -6,7 +6,7 @@ const PrivateKeyContext = createContext<any>(undefined);
 export function PrivateKeyWrapper({children} : {
     children: React.ReactNode
 }) {
-    const [privateKeyGlobal, setPrivateKeyGlobal] = useState("Loading...")
+    const [privateKeyGlobal, setPrivateKeyGlobal] = useState("")
 
     return (
         <PrivateKeyContext.Provider value = {{

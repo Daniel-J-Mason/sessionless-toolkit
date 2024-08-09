@@ -45,12 +45,14 @@ export default function CopyToClipBoardButton({labelText, labelValue}: Props) {
                     onMouseLeave={onMouseExit}>
                 {isHovering ?
                     <img style={{
+                        minWidth: "30px",
                         width: "30px",
                         height: "auto"
                     }}
 
                          src={"inverted_copy_icon.png"} alt={"icon"}/> :
                     <img style={{
+                        minWidth: "30px",
                         width: "30px",
                         height: "auto"
                     }}

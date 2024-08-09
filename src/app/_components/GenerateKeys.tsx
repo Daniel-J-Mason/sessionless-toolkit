@@ -1,26 +1,22 @@
 'use client';
 
-import {useEffect, useState} from "react";
 import {invoke} from "@tauri-apps/api/tauri";
 import CopyToClipBoardButton from "@/app/_components/CopyLabel";
 import {usePrivateKeyContext} from "@/app/_context/PrivateKeyContext";
+import {usePublicKeyContext} from "@/app/_context/PublicKeyContext";
 
 export default function GenerateKeys() {
-    const [publicKey, setPublicKey] = useState("Loading...");
-    const {privateKeyGlobal ,setPrivateKeyGlobal} = usePrivateKeyContext();
+    const {publicKeyGlobal, setPublicKeyGlobal} = usePublicKeyContext();
+    const {privateKeyGlobal, setPrivateKeyGlobal} = usePrivateKeyContext();
 
     function generateKeys() {
         invoke<[string, string]>('generate_keys')
             .then(result => {
                 setPrivateKeyGlobal(result[0]);
-                setPublicKey(result[1]);
+                setPublicKeyGlobal(result[1]);
             })
             .catch(console.error);
     }
-
-    useEffect(() => {
-        generateKeys()
-    }, []);
 
     return (
         <div style={{
@@ -31,8 +27,8 @@ export default function GenerateKeys() {
         }}>
             <button onClick={generateKeys}>Generate Keys</button>
             <div>
-                <CopyToClipBoardButton labelText={"Private Key: "} labelValue={privateKeyGlobal || "Loading..."}/>
-                <CopyToClipBoardButton labelText={"Public Key: "} labelValue={publicKey || "Loading..."}/>
+                <CopyToClipBoardButton labelText={"Private Key: "} labelValue={privateKeyGlobal || ""}/>
+                <CopyToClipBoardButton labelText={"Public Key: "} labelValue={publicKeyGlobal || ""}/>
             </div>
         </div>
     )

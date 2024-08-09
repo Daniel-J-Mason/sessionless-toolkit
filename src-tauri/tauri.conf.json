@@ -55,7 +55,7 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 630,
         "resizable": true,
         "title": "Sessionless Toolkit",
         "width": 800
