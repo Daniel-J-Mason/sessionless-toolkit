@@ -36,6 +36,8 @@ textarea {
   min-width: 600px;
   min-height: 100px;
   resize: none;
+  border: 2px solid rgb(var(--foreground-rgb));
+  border-radius: 4px;
 }
 
 @layer utilities {
