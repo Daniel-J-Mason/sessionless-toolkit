@@ -38,7 +38,10 @@ fn verify(public_key: String, signature: String, message: String) -> bool {
         Ok(public_key) => public_key,
         Err(_) => return false
     };
-    let signature = Signature::from_hex(signature).unwrap();
+    let signature = match Signature::from_hex(signature) {
+        Ok(signature) => signature,
+        Err(_) => return false
+    };
     generator.verify(message, &public_key, &signature).map_err(|err| println!("Failed to verify the payload: {}", err)).is_ok()
 }
 
