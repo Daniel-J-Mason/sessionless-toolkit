@@ -63,7 +63,7 @@ export default function Validation() {
                 </button>
             </div>
             <TextAreaWithLabel
-                label="PublicKey:"
+                label="Public Key:"
                 value={publicKey}
                 onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setPublicKey(event.target.value)}
             />
